@@ -15,19 +15,19 @@ git clone https://github.com/yandex-praktikum/mle-project-sprint-4-v001.git
 Создать новое виртуальное окружение можно командой:
 
 ```
-python3 -m venv env_recsys_start
+$ python3.10 -m venv .env_recsys_start
 ```
 
 После его инициализации следующей командой
 
 ```
-. env_recsys_start/bin/activate
+$ source .env_recsys_start/bin/activate
 ```
 
 установите в него необходимые Python-пакеты следующей командой
 
 ```
-pip install -r requirements.txt
+$ pip install -r requirements.txt
 ```
 
 ### Скачайте файлы с данными
