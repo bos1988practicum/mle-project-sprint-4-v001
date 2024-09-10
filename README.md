@@ -61,12 +61,76 @@ jupyter lab --ip=0.0.0.0 --no-browser
 
 # Сервис рекомендаций
 
-Код сервиса рекомендаций находится в файле `recommendations_service.py`.
+**Стратегия смешивания онлайн- и офлайн-рекомендаций:**
+- онлайн-рекомендации занимают нечётные места,
+- офлайн-рекомендации занимают чётные места.
 
-<*укажите здесь необходимые шаги для запуска сервиса рекомендаций*>
+---
+
+Подготовленные файлы с рекомендациями находятся в S3:
+
+```
+S3_BUCKET_NAME=s3-student-mle-20240525-e85d25cb1f
+```
+
+Пути к подготовленным фалам:
+
+```
+recsys/data/items.parquet
+recsys/data/id_dict_items.parquet
+recsys/data/id_dict_users.parquet
+recsys/recommendations/personal_als.parquet
+recsys/recommendations/similar.parquet
+recsys/recommendations/top_popular.parquet
+```
+
+- Код сервиса событий находится в файле `events_service.py`.
+- Код сервиса похожих объектов находится в файле `features_service.py`.
+- Код сервиса рекомендаций находится в файле `recommendations_service.py`.
+
+Запуск сервиса событий
+```bash
+$ uvicorn events_service:app --port 8020
+```
+
+Запуск сервиса похожих объектов
+```bash
+$ uvicorn features_service:app --port 8010
+```
+
+Запуск сервиса рекомендаций
+```bash
+$ uvicorn recommendation_service:app 
+```
 
 # Инструкции для тестирования сервиса
 
-Код для тестирования сервиса находится в файле `test_service.py`.
+- Код для тестирования сервиса событий находится в файле `test_service_events.py`.
+- Код для тестирования сервиса похожих объектов находится в файле `test_service_features.py`.
+- Код для тестирования сервиса рекомендаций находится в файле `test_service.py`.
 
-<*укажите здесь необходимые шаги для тестирования сервиса рекомендаций*>
+Тест сервиса событий
+```bash
+$ python -m test_service_events
+```
+
+Тест сервиса похожих объектов
+```bash
+$ python -m test_service_features
+```
+
+Тест сервиса рекомендаций
+```bash
+$ python -m test_service
+```
+
+Лог из `test_service.py` в файле `test_service.log`
+
+Ключевые тесты:
+
+- для пользователя с персональными рекомендациями, но без онлайн-истории:
+  - ***test 1 (personal answer offline)***
+- для пользователя без персональных рекомендаций:
+  - ***test 2 (default answer offline)***
+- для пользователя с персональными рекомендациями и онлайн-историей:
+  - ***test 7 (online + offline)***
