@@ -79,7 +79,7 @@ S3_BUCKET_NAME=s3-student-mle-20240525-e85d25cb1f
 recsys/data/items.parquet
 recsys/data/id_dict_items.parquet
 recsys/data/id_dict_users.parquet
-recsys/recommendations/personal_als.parquet
+recsys/recommendations/recommendations.parquet
 recsys/recommendations/similar.parquet
 recsys/recommendations/top_popular.parquet
 ```
