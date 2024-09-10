@@ -1,0 +1,81 @@
+
+test 1 (personal answer offline):
+{'recs': [14235025, 51516485, 40548548, 257150, 23330779]}
+
+test 2 (default answer offline):
+{'recs': [58723120, 41284287, 41284288]}
+
+test 3 (empty answer online):
+{'recs': []}
+
+test 4 (add events):
+{'result': 'ok'}
+
+test 5 (good answer online):
+{'recs': [34976783, 42197229, 29544272]}
+Онлайн-рекомендации
+    item_id track_name     artist_names
+0  34976783    Thunder  Imagine Dragons
+1  42197229    Natural  Imagine Dragons
+2  29544272      Human   Rag'n'Bone Man
+
+test 6 (few events):
+{'recs': [39946957, 49961817, 51452575, 56920241, 45130892, 54798445, 48801315]}
+Онлайн-события
+    item_id  track_name                  artist_names
+0  65851540      Юность                         Dabro
+1  45499814        Life                        Zivert
+2  57921154      Комета                          JONY
+3  35505245  I Got Love  Miyagi & Эндшпиль; Рем Дигга
+Онлайн-рекомендации
+    item_id      track_name               artist_names
+0  39946957   Зелёные волны                     Zivert
+1  49961817   Грустный дэнс  Artik & Asti; Артём Качер
+2  51452575    Под гипнозом               Artik & Asti
+3  56920241           Credo                     Zivert
+4  45130892  Мама, я танцую                     #2Маши
+5  54798445          Прятки            HammAli & Navai
+6  48801315        Неземная                MAX BARSKIH
+
+test 7 (online + offline):
+Онлайн-события
+   item_id        track_name     artist_names
+0   178529              Numb      Linkin Park
+1   328683  Bring Me To Life      Evanescence
+2    37384            Zombie  The Cranberries
+Офлайн-рекомендации
+    item_id              track_name                                       artist_names
+0  34071554  Если ты меня не любишь                                   ЕГОР КРИД; MOLLY
+1  29674911         Sucker For Pain  Imagine Dragons; Wiz Khalifa; Lil Wayne; X Amb...
+2  31315099                  Туманы                                        MAX BARSKIH
+3  30380200                  Романс                                              PIZZA
+4    582507                Режиссер                                            Градусы
+5  33308946                Вахтёрам                                            Бумбокс
+6  33146010                 Сопрано                                                MOT
+7  29154889        Навернопотомучто                                     Время и Стекло
+8  27077792                  Капкан                                                MOT
+9  25871686           Пьяное солнце                                           ALEKSEEV
+Онлайн-рекомендации
+   item_id               track_name           artist_names
+0   178495               In the End            Linkin Park
+1   170252           What I've Done            Linkin Park
+2    34608         Behind Blue Eyes            Limp Bizkit
+3   328683         Bring Me To Life            Evanescence
+4   178529                     Numb            Linkin Park
+5    48951             It's My Life               Bon Jovi
+6   148345          Californication  Red Hot Chili Peppers
+7    52100              Don't Speak               No Doubt
+8    53404  Smells Like Teen Spirit                Nirvana
+9   147965       Losing My Religion                 R.E.M.
+Рекомендации
+    item_id              track_name                                       artist_names
+0    178495              In the End                                        Linkin Park
+1  34071554  Если ты меня не любишь                                   ЕГОР КРИД; MOLLY
+2    170252          What I've Done                                        Linkin Park
+3  29674911         Sucker For Pain  Imagine Dragons; Wiz Khalifa; Lil Wayne; X Amb...
+4     34608        Behind Blue Eyes                                        Limp Bizkit
+5  31315099                  Туманы                                        MAX BARSKIH
+6    328683        Bring Me To Life                                        Evanescence
+7  30380200                  Романс                                              PIZZA
+8    178529                    Numb                                        Linkin Park
+9    582507                Режиссер                                            Градусы
