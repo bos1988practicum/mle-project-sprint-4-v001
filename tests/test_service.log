@@ -1,0 +1,32 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-8.3.3, pluggy-1.5.0 -- /home/mle-user/mle_projects_final/mle-project-sprint-4-v001/.env_recsys_start/bin/python
+cachedir: .pytest_cache
+rootdir: /home/mle-user/mle_projects_final/mle-project-sprint-4-v001
+plugins: cov-5.0.0, anyio-3.7.1
+collecting ... collected 14 items
+
+tests/test_service.py::TestEventsService::test_settings PASSED           [  7%]
+tests/test_service.py::TestEventsService::test_put_method PASSED         [ 14%]
+tests/test_service.py::TestEventsService::test_get_method PASSED         [ 21%]
+tests/test_service.py::TestEventsService::test_get_method_with_param PASSED [ 28%]
+tests/test_service.py::TestFeaturesService::test_settings PASSED         [ 35%]
+tests/test_service.py::TestFeaturesService::test_good_item PASSED        [ 42%]
+tests/test_service.py::TestFeaturesService::test_bad_item PASSED         [ 50%]
+tests/test_service.py::TestRecommendationService::test_personal_answer_offline PASSED [ 57%]
+tests/test_service.py::TestRecommendationService::test_default_answer_offline PASSED [ 64%]
+tests/test_service.py::TestRecommendationService::test_empty_answer_online PASSED [ 71%]
+tests/test_service.py::TestRecommendationService::test_add_events PASSED [ 78%]
+tests/test_service.py::TestRecommendationService::test_good_answer_online PASSED [ 85%]
+tests/test_service.py::TestRecommendationService::test_good_answer_online_with_events PASSED [ 92%]
+tests/test_service.py::TestRecommendationService::test_both_offline_online PASSED [100%]
+
+---------- coverage: platform linux, python 3.10.12-final-0 ----------
+Name                    Stmts   Miss  Cover
+-------------------------------------------
+settings.py                54      0   100%
+tests/test_service.py     104      0   100%
+-------------------------------------------
+TOTAL                     158      0   100%
+
+
+============================== 14 passed in 1.17s ==============================

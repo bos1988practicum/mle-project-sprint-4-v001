@@ -105,26 +105,28 @@ $ uvicorn recommendation_service:app
 
 # Инструкции для тестирования сервиса
 
-- Код для тестирования сервиса событий находится в файле `test_service_events.py`.
-- Код для тестирования сервиса похожих объектов находится в файле `test_service_features.py`.
-- Код для тестирования сервиса рекомендаций находится в файле `test_service.py`.
+## Ручные тесты
+
+- Код для тестирования сервиса событий находится в файле `tests/manual/manual_test_service_events.py`.
+- Код для тестирования сервиса похожих объектов находится в файле `tests/manual/manual_test_service_features.py`.
+- Код для тестирования сервиса рекомендаций находится в файле `tests/manual/manual_test_service.py`.
 
 Тест сервиса событий
 ```bash
-$ python -m test_service_events
+$ python -m tests.manual.manual_test_service_events
 ```
 
 Тест сервиса похожих объектов
 ```bash
-$ python -m test_service_features
+$ python -m tests.manual.manual_test_service_features
 ```
 
 Тест сервиса рекомендаций
 ```bash
-$ python -m test_service
+$ python -m tests.manual.manual_test_service
 ```
 
-Лог из `test_service.py` в файле `test_service.log`
+Лог из `manual_test_service.py` в файле `tests/manual/manual_test_service.log`
 
 Ключевые тесты:
 
@@ -134,3 +136,15 @@ $ python -m test_service
   - ***test 2 (default answer offline)***
 - для пользователя с персональными рекомендациями и онлайн-историей:
   - ***test 7 (online + offline)***
+
+## Автотесты
+
+Запуск тестов
+```bash
+$ python -m pytest -vv --cov
+```
+
+Запуск тестов с записью резльтатов в файл
+```bash
+python -m pytest -vv --cov > tests/test_service.log
+```

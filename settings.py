@@ -14,9 +14,25 @@ class PathSettings(BaseSettings):
 
 
 class RecommendationServiceSettings(BaseSettings):
+    RECS_HOST: str = "localhost"
+    RECS_PORT: int = 8000
+    RECS_PATH: str = ""
+    RECS_PROTOCOL: str = "http"
+
+    RECS_HEADERS_CONTENT_TYPE: str = "application/json"
+    RECS_HEADERS_ACCEPT: str = "text/plain"
+
     ITEMS_COLUMN_NAME: str = "item_id"
     USERS_COLUMN_NAME: str = "user_id"
     RATING_COLUMN_NAME: str = "score"
+
+    @property
+    def url(self) -> str:
+        return f"{self.RECS_PROTOCOL}://{self.RECS_HOST}:{self.RECS_PORT}/{self.RECS_PATH}"
+    
+    @property
+    def headers(self) -> dict:
+        return {"Content-type": self.RECS_HEADERS_CONTENT_TYPE, "Accept": self.RECS_HEADERS_ACCEPT}
 
 
 class EventsServiceSettings(BaseSettings):

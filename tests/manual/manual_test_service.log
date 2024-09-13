@@ -3,7 +3,7 @@ test 1 (personal answer offline):
 {'recs': [14235025, 51516485, 40548548, 257150, 23330779]}
 
 test 2 (default answer offline):
-{'recs': [58723120, 41284287, 41284288]}
+{'recs': [60292250, 65851540, 33311009]}
 
 test 3 (empty answer online):
 {'recs': []}
@@ -12,7 +12,7 @@ test 4 (add events):
 {'result': 'ok'}
 
 test 5 (good answer online):
-{'recs': [34976783, 42197229, 29544272]}
+{'recs': [34976783, 42197229, 54798445]}
 Онлайн-рекомендации
     item_id track_name     artist_names
 0  34976783    Thunder  Imagine Dragons

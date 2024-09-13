@@ -36,7 +36,7 @@ print(recs)
 
 print("\ntest 2 (default answer offline):")
 
-params = {"user_id": 100, 'k': 3}
+params = {"user_id": 2_000_000, 'k': 3}
 resp = requests.post(service_url + "/recommendations_offline", headers=headers, params=params)
 
 if resp.status_code == 200:
@@ -113,7 +113,7 @@ display_items(online_recs["recs"])
 print("\ntest 7 (online + offline):")
 
 user_id = 1291250
-event_item_ids =  [178529, 328683, 37384]
+event_item_ids = [178529, 328683, 37384]
 
 for event_item_id in event_item_ids:
     resp = requests.post(
