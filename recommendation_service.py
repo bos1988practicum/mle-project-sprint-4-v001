@@ -8,19 +8,23 @@ import pandas as pd
 from itertools import chain
 from core import Recommendations
 
+from settings import (
+    AppSettings,
+    EventsServiceSettings,
+    FeaturesServiceSettings,
+    PathSettings,
+    RecommendationServiceSettings,
+)
+
 
 logger = logging.getLogger("uvicorn.error")
-features_store_url = "http://127.0.0.1:8010"
-events_store_url = "http://127.0.0.1:8020"
 
-# def dedup_ids(ids):
-#     """
-#     Дедублицирует список идентификаторов, оставляя только первое вхождение
-#     """
-#     seen = set()
-#     ids = [id for id in ids if not (id in seen or seen.add(id))]
+app_settings = AppSettings()
+path_settings = PathSettings()
+events_store_settings = EventsServiceSettings()
+features_store_settings = FeaturesServiceSettings()
+recommendation_settings = RecommendationServiceSettings()
 
-#     return ids
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -30,13 +34,13 @@ async def lifespan(app: FastAPI):
     rec_store = Recommendations()
     
     rec_store.load(
-        path_recs_personal="recommendations.parquet",
-        path_recs_default="top_popular.parquet",
-        path_dict_items="id_dict_items.parquet",
-        path_dict_users="id_dict_users.parquet",
-        col_items="item_id",
-        col_users="user_id",
-        col_rating="score",
+        path_recs_personal=path_settings.PATH_RECS_PERSONAL,
+        path_recs_default=path_settings.PATH_RECS_DEFAULT,
+        path_dict_items=path_settings.PATH_DICT_ITEMS,
+        path_dict_users=path_settings.PATH_DICT_USERS,
+        col_items=recommendation_settings.ITEMS_COLUMN_NAME,
+        col_users=recommendation_settings.USERS_COLUMN_NAME,
+        col_rating=recommendation_settings.RATING_COLUMN_NAME,
     )
     app.state.rec_store = rec_store
 
@@ -67,14 +71,12 @@ async def recommendations_online(user_id: int, k: int = 100):
     Возвращает список онлайн-рекомендаций длиной k для пользователя user_id
     """
 
-    headers = {"Content-type": "application/json", "Accept": "text/plain"}
-
     # получаем список последних событий пользователя, возьмём три последних
-    params = {"user_id": user_id, "k": 3}
-    resp = requests.post(events_store_url + "/get", headers=headers, params=params)
+    params = {"user_id": user_id, "k": app_settings.ONLINE_COUNT_EVENTS}
+    resp = requests.post(events_store_settings.url, headers=events_store_settings.headers, params=params)
     events = resp.json()
     events = events["events"]
-    logger.debug(f"3 events: {events}")
+    logger.debug(f"{app_settings.ONLINE_COUNT_EVENTS} events: {events}")
 
     # получаем список айтемов, похожих на последние три, с которыми взаимодействовал пользователь
     items = []
@@ -82,7 +84,7 @@ async def recommendations_online(user_id: int, k: int = 100):
     for item_id in events:
         # для каждого item_id получаем список похожих в item_similar_items
         params = {"item_id": item_id, "k": k}
-        resp = requests.post(features_store_url + "/similar_items", headers=headers, params=params)
+        resp = requests.post(features_store_settings.url, headers=features_store_settings.headers, params=params)
         item_similar_items = resp.json()
         items += item_similar_items["sim_item_id"]
         scores += item_similar_items["score"]

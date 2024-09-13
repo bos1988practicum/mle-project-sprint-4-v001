@@ -12,3 +12,4 @@ seaborn==0.12.1
 uvicorn==0.24.0.post1
 boto3==1.34.78
 python-dotenv==1.0.1
+pydantic-settings==2.5.2
