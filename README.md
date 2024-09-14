@@ -146,5 +146,5 @@ $ python -m pytest -vv --cov
 
 Запуск тестов с записью резльтатов в файл
 ```bash
-python -m pytest -vv --cov > tests/test_service.log
+$ python -m pytest -vv --cov > tests/test_service.log
 ```
